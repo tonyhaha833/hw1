@@ -37,146 +37,33 @@
             background: #ddd;
             color: black;
         }
-    </style>
-    <!-- 🔥 引入 Highcharts.js -->
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-</head>
 
-<body>
-
-<div class="navbar">
-    <a href="#container">回首頁</a>    
-    <a href="#s1">台中國家歌劇院</a>
-    <a href="#s2">臺中州廳</a>
-    <a href="#s3">審計新村</a>
-</div>
-
-<div id="container">
-    <table>
-        <tr>
-            <td colspan="2">
-                <p><br><br>
-                    <font class="large_font">台中市景點推薦</font>
-                </p>
-                <p>
-                    <iframe frameborder="0" src="slideshow.html" width="1024" height="360"></iframe>
-                </p>    
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <p class="large_font1">臺中市</p>
-                <p>臺中市，通稱臺中，簡稱「中」，為中華民國直轄市，臺灣六都之一，也是中臺灣唯一的直轄市。周邊與臺灣省的六個縣相鄰，北鄰苗栗縣、新竹縣，南鄰彰化縣、南投縣，東隔中央山脈與花蓮縣相鄰，東北以中央山脈和雪山山脈毗鄰宜蘭縣，西臨臺灣海峽。
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p><img id="s1" src="01.jpeg" class="r_img"></p>
-            </td>
-            <td>
-                <p class="large_font1"><br>台中國家歌劇院</p>
-                <p>台中國家歌劇院位於台中市西屯區...</p>
-                <p>所在位置：台中市西屯區惠來路二段101號</p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p class="large_font1">臺中州廳</p><br>
-                <p>臺中州廳位於台中市西區...</p>
-                <p>所在位置：台中市西區民權路99號</p>
-            </td>
-            <td>
-                <p><img id="s2" src="02.jpeg" class="r_img"></p>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <p><img id="s3" src="03.jpeg" class="r_img"></p>
-            </td>
-            <td>
-                <p class="large_font1">審計新村</p><br>
-                <p>審計新村位於台中市西區...</p>
-                <p>所在位置：台中市西區民生路368巷</p>
-            </td>
-        </tr>
-
-        <!-- 🔥 這裡才是正確放置折線圖 & 圓餅圖的地方 -->
-        <tr>
-            <td colspan="2">
-                <p class="large_font1">台中月均溫變化</p>
-                <div id="linechart-container" style="width:100%; height:400px;"></div>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="2">
-                <p class="large_font1">台中年均降雨量分佈</p>
-                <div id="piechart-container" style="width:100%; height:400px;"></div>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="2">
-                <iframe src="https://www.google.com/maps/d/embed?mid=1_is3plYN55rj7COzqh-rd8Is2haiidw&ehbc=2E312F" width="1024" height="640"></iframe>    
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="2">
-                <p>網頁設計:葉進富</p>
-            </td>
-        </tr>
-    </table>
-</div>
-
-<!-- 🔥 引入 script.js 讓圖表顯示 -->
-<script src="./script.js"></script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>台中市景點推薦</title>
-    <style>
-        #container{ margin:0 auto;width: 1024px;}
-        p{text-align: center;}
-        .r_img{ border-radius:50%;width:300px;height:300px;}
-        .r_img1{border-radius:20px; }
-        .large_font{ font-size:50px; }
-        .large_font1{ font-size:30px; }
-        .large_font1:hover{ background-color:black; color:white;}
-        .r_img:hover{ rotate:10deg;opacity:50%;}
-
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-            position: fixed; /* Set the navbar to fixed position */
-            top: 0; /* Position the navbar at the top of the page */
-            width: 100%; /* Full width */
+        /* Flexbox for layout */
+        .chart-container {
+            display: flex;
+            justify-content: space-between; /* Distribute space between items */
+            flex-wrap: wrap; /* Allow wrapping to new line if necessary */
+            gap: 20px; /* Add some space between the items */
+            margin-bottom: 40px;
         }
 
-        /* Links inside the navbar */
-        .navbar a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
+        .chart-item {
+            flex: 1 1 45%; /* Each item takes up 45% of the width */
             text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
         }
 
-        /* Change background on mouse-over */
-        .navbar a:hover {
-            background: #ddd;
-            color: black;
+        .chart-item p {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
+
+        /* Ensuring proper height for charts */
+        #linechart-container, #piechart-container {
+            width: 100%;
+            height: 400px;
+        }
+
     </style>
     <!-- 🔥 引入 Highcharts.js -->
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -206,8 +93,7 @@
         <tr>
             <td colspan="2">
                 <p class="large_font1">臺中市</p>
-                <p>臺中市，通稱臺中，簡稱「中」，為中華民國直轄市，臺灣六都之一，也是中臺灣唯一的直轄市。周邊與臺灣省的六個縣相鄰，北鄰苗栗縣、新竹縣，南鄰彰化縣、南投縣，東隔中央山脈與花蓮縣相鄰，東北以中央山脈和雪山山脈毗鄰宜蘭縣，西臨臺灣海峽。
-                </p>
+                <p>臺中市，通稱臺中，簡稱「中」，為中華民國直轄市，臺灣六都之一，也是中臺灣唯一的直轄市。周邊與臺灣省的六個縣相鄰，北鄰苗栗縣、新竹縣，南鄰彰化縣、南投縣，東隔中央山脈與花蓮縣相鄰，東北以中央山脈和雪山山脈毗鄰宜蘭縣，西臨臺灣海峽。</p>
             </td>
         </tr>
 
@@ -244,18 +130,20 @@
             </td>
         </tr>
 
-        <!-- 🔥 這裡才是正確放置折線圖 & 圓餅圖的地方 -->
+        <!-- 🔥 使用 Flexbox 讓圖表和文字並排顯示 -->
         <tr>
             <td colspan="2">
-                <p class="large_font1">台中月均溫變化</p>
-                <div id="linechart-container" style="width:100%; height:400px;"></div>
-            </td>
-        </tr>
+                <div class="chart-container">
+                    <div class="chart-item">
+                        <p class="large_font1">台中月均溫變化</p>
+                        <div id="linechart-container"></div>
+                    </div>
 
-        <tr>
-            <td colspan="2">
-                <p class="large_font1">台中年均降雨量分佈</p>
-                <div id="piechart-container" style="width:100%; height:400px;"></div>
+                    <div class="chart-item">
+                        <p class="large_font1">台中年均降雨量分佈</p>
+                        <div id="piechart-container"></div>
+                    </div>
+                </div>
             </td>
         </tr>
 
